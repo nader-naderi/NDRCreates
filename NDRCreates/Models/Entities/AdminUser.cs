@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
+using System.ComponentModel.DataAnnotations;
+
 namespace NDRCreates.Models.Entities
 {
     public class BasicRole : IdentityRole
@@ -54,13 +56,13 @@ namespace NDRCreates.Models.Entities
         public string UserId { get; set; }
         public BasicUser Author { get; set; }
         public DateTime PublishedDate { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; } = [];
 
         // Change the type of CategoryId to int
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public ICollection<Tag> Tags { get; set; }
-        public ICollection<Like> Likes { get; set; }
+        public ICollection<Tag> Tags { get; set; } = [];
+        public ICollection<Like> Likes { get; set; } = [];
     }
 
 
@@ -97,4 +99,25 @@ namespace NDRCreates.Models.Entities
         public string UserId { get; set; }
         public BasicUser User { get; set; }
     }
+    public class UnityPackage
+    {
+        public int Id { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Title { get; set; }
+        [Required]
+        public string Description { get; set; }
+        public string Version { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string FilePath { get; set; }
+        public string ThumbnailPath { get; set; }
+        public DateTime UploadDate { get; set; }
+        public int DownloadCount { get; set; }
+        public int ViewCount { get; set; }
+        public int LikeCount { get; set; }
+        public string UserId { get; set; }
+        public BasicUser User { get; set; }
+    }
+
 }

@@ -1,0 +1,75 @@
+﻿@using NDRCreates.Models.ViewModels
+@model UploadPackageViewModel
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Version" class="control-label"></label>
+        <input asp-for="Version" class="form-control" />
+        <span asp-validation-for="Version" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PackageFiles" class="control-label">Package file(s)</label>
+        <input id="packageInput" asp-for="PackageFiles" type="file" multiple class="form-control" />
+        <span asp-validation-for="PackageFiles" class="text-danger"></span>
+        <div id="packagePreview"></div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ThumbnailFiles" class="control-label">Thumbnail image(s)</label>
+        <input id="thumbnailInput" asp-for="ThumbnailFiles" type="file" multiple class="form-control" />
+        <span asp-validation-for="ThumbnailFiles" class="text-danger"></span>
+        <div id="thumbnailPreview"></div>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+    <button type="button" class="btn btn-secondary" onclick="location.href='/home/index'">Cancel</button>
+    <div id="loading" style="display: none;">
+        <img src="/img/loading.gif" alt="Loading..." />
+    </div>
+</form>
+<script>
+
+    document.querySelector('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        document.getElementById('loading').style.display = 'block';
+        // Add your custom form submission code here (e.g., AJAX request)
+    });
+
+    // Preview for package files
+    document.getElementById('packageInput').addEventListener('change', (event) => {
+        const packagePreview = document.getElementById('packagePreview');
+        const files = event.target.files;
+
+        files.forEach((file) => {
+            const packageElement = document.createElement('package');
+            packageElement.controls = true;
+            packageElement.style.maxWidth = '100%';
+            packageElement.src = URL.createObjectURL(file);
+
+            packagePreview.appendChild(packageElement);
+        });
+    });
+
+    // Preview for thumbnail images
+    document.getElementById('thumbnailInput').addEventListener('change', (event) => {
+        const thumbnailPreview = document.getElementById('thumbnailPreview');
+        const files = event.target.files;
+
+        files.forEach((file) => {
+            const imgElement = document.createElement('img');
+            imgElement.style.maxWidth = '100%';
+            imgElement.src = URL.createObjectURL(file);
+
+            thumbnailPreview.appendChild(imgElement);
+        });
+    });
+
+</script>

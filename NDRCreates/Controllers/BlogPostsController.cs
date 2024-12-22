@@ -71,13 +71,22 @@ namespace NDRCreates.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(blogPost);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
+
+            blogPost.Tags ??= [];
+            blogPost.Likes ??= [];
+            blogPost.Author ??= _context.Users.FirstOrDefault();
+            blogPost.Category ??= _context.Categories.FirstOrDefault();
+            blogPost.Comments ??= [];
+
+            _context.Add(blogPost);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", blogPost.UserId);
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", blogPost.CategoryId);
             return View(blogPost);
+            throw new Exception();
         }
 
         // GET: BlogPosts/Edit/5

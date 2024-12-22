@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 using NDRCreates.Data;
 using NDRCreates.Models.Entities;
+using NDRCreates.Repositories;
+using NDRCreates.Services.FileUploadService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,13 +19,17 @@ builder.Services.AddIdentity<BasicUser, BasicRole>(options => options.SignIn.Req
     .AddDefaultTokenProviders()
     .AddUserManager<UserManager<BasicUser>>();
 
-//builder.Services.AddDefaultIdentity<BasicUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+//builder.Services.AddDefaultIdentity<BasicUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//.AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IFileUploadService, LocalFileStorageService>();
+builder.Services.AddScoped<IUnityPackageRepository, UnityPackageRepository>();
+builder.Services.AddScoped<IUnityPackageService, UnityPackageService>();
 
 var app = builder.Build();
 

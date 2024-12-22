@@ -20,6 +20,7 @@ namespace NDRCreates.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Like> Likes { get; set; }
+        public DbSet<UnityPackage> UnityPackage { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,0 +1,41 @@
+﻿@model NDRCreates.Models.DisplayModels.FeedDisplayModel
+@{
+    ViewData["Title"] = "Packages Main Page";
+}
+
+<div class="container">
+    <p class="text-center">
+        <a asp-action="Create">Upload New Package</a>
+    </p>
+</div>
+<div class="row">
+
+    @if(Model.Packages.Count <= 0)
+    {
+        <p class="text-center text-black text-bg-primary">No Packages Found.</p>
+        return;
+    }
+    @foreach (var package in Model.Packages)
+    {
+        <div class="col-lg-3 col-md-4 col-6">
+            <a asp-controller="UnityPackages" asp-action="Details" asp-route-id="@package.Id" class="card-link" style="width: 18rem;">
+                <div class="card">
+                    <img src="@package.ThumbnailPath" class="card-img-top" alt="@package.Title">
+                    <div class="card-body">
+                        <h5 class="card-title">@package.Title</h5>
+                        <p><i class="fa fa-clock-o"></i> Version: @package.Version</p>
+                        @if (package.User != null)
+                        {
+                            <p><i class="fa fa-user"></i> Uploaded by: @package.User.UserName</p> 
+                        }
+                        else
+                        {
+                            <p>User not found</p>
+                        }
+                        <a asp-controller="UnityPackages" asp-action="Download" asp-route-id="@package.Id"><img src="~/assets/img/Download_2x.png" alt="Download"></a>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
