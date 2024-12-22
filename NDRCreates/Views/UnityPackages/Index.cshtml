@@ -17,23 +17,22 @@
     }
     @foreach (var package in Model.Packages)
     {
-        <div class="col-lg-3 col-md-4 col-6">
-            <a asp-controller="UnityPackages" asp-action="Details" asp-route-id="@package.Id" class="card-link" style="width: 18rem;">
-                <div class="card">
-                    <img src="@package.ThumbnailPath" class="card-img-top" alt="@package.Title">
-                    <div class="card-body">
-                        <h5 class="card-title">@package.Title</h5>
-                        <p><i class="fa fa-clock-o"></i> Version: @package.Version</p>
-                        @if (package.User != null)
-                        {
-                            <p><i class="fa fa-user"></i> Uploaded by: @package.User.UserName</p> 
-                        }
-                        else
-                        {
-                            <p>User not found</p>
-                        }
-                        <a asp-controller="UnityPackages" asp-action="Download" asp-route-id="@package.Id"><img src="~/assets/img/Download_2x.png" alt="Download"></a>
-                    </div>
+        <div class="card" style="width: 18rem;">
+            <img src="@package.ThumbnailPath" class="card-img-top" alt="@package.Title">
+             <a asp-controller="UnityPackages" asp-action="Details" asp-route-id="@package.Id" >
+                <div class="card-body">
+                    <h5 class="card-title">@package.Title</h5>
+                    <p><i class="fa fa-clock-o"></i> @package.Description</p>
+                    <p><i class="fa fa-clock-o"></i> Version: @package.Version</p>
+                    @if (package.User != null)
+                    {
+                        <p><i class="fa fa-user"></i> Uploaded by: @package.User.UserName</p>
+                    }
+                    else
+                    {
+                        <p>User not found</p>
+                    }
+                    <a asp-controller="UnityPackages" asp-action="Download" asp-route-id="@package.Id" class="btn btn-primary">Download</a>
                 </div>
             </a>
         </div>

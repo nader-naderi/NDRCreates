@@ -218,6 +218,8 @@ namespace NDRCreates.Controllers
                 }
 
                 memoryStream.Position = 0;
+                package.DownloadCount++;
+                await _packageService.UpdatePackage(package.Id, package);
                 return File(memoryStream, "application/octet-stream", Path.GetFileName(package.FilePath));
             }
         }
