@@ -1,3 +1,15 @@
 ﻿@{
-    Layout = "_Layout";
+    var controller = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+
+    // Use _Layout for non-admin views
+    if (!controller.Equals("admin"))
+    {
+        Layout = "_Layout";
+    }
+    else
+    {
+        // Use _AdminLayout for admin views
+        Layout = "_AdminLayout";
+    }
 }

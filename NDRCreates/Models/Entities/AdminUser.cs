@@ -6,6 +6,14 @@ namespace NDRCreates.Models.Entities
 {
     public class BasicRole : IdentityRole
     {
+        public BasicRole()
+        {
+        }
+
+        public BasicRole(string roleName) : base(roleName)
+        {
+        }
+
         public virtual ICollection<BasicUserRole> UserRoles { get; set; }
         public virtual ICollection<BasicRoleClaim> RoleClaims { get; set; }
     }

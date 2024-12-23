@@ -58,4 +58,40 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
+// Handle User Role.
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<BasicRole>>();
+
+    var roles = new[] { "Admin", "Manager", "Subscriber" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+            await roleManager.CreateAsync(new BasicRole(role));
+    }
+}
+
+// Create Admin Account.
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<BasicUser>>();
+
+    string email = "2200stellaris@gmail.com";
+    string password = "2200stellaris@gmail.com";
+
+    // No Admin? Create new one.
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        var user = new BasicUser();
+        user.Email = email;
+        user.UserName = "Nader Naderi";
+        user.EmailConfirmed = true;
+
+        await userManager.CreateAsync(user, password);
+
+        await userManager.AddToRoleAsync(user, "Admin");
+    }
+}
+
 app.Run();

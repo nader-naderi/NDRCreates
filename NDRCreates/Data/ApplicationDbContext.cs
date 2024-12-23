@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
 using NDRCreates.Models.Entities;
-
-using System.Reflection.Emit;
 
 namespace NDRCreates.Data
 {
