@@ -1,4 +1,8 @@
-﻿@model NDRCreates.Models.Entities.UnityPackage
+﻿@using Microsoft.AspNetCore.Identity
+@model NDRCreates.Models.Entities.UnityPackage
+@using NDRCreates.Models.Entities
+@inject SignInManager<BasicUser> SignInManager
+@inject UserManager<BasicUser> UserManager
 
 @{
     ViewData["Title"] = "Details";
@@ -50,6 +54,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+    }
+    
     <a asp-action="Index">Back to List</a>
 </div>

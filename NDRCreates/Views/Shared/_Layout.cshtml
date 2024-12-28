@@ -18,9 +18,9 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NDRCreates</a>
+            <a class="navbar-brand ndrcreates-icon" asp-area="" asp-controller="Home" asp-action="Index"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,16 +28,19 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="BlogPosts" asp-action="Index">BlogPosts</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="BlogPosts" asp-action="Index">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="UnityPackages" asp-action="Index">UnityPackages</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="UnityPackages" asp-action="Index">UnityPackages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="UnityPackages" asp-action="Index">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">About Me</a>
                     </li>
                 </ul>
                 <partial name="_LoginPartial" />
@@ -50,9 +53,16 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted bg-dark">
+        <div class="container bg-dark">
             &copy; 2024 - NDRCreates - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        <div class="social-media-icons justify-content-center">
+            <a href="https://www.facebook.com/nader-naderi" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com/nader-naderi" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/nader-naderi" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.github.com/nader-naderi" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/nader-naderi" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
     <!-- Bootstrap core JS-->

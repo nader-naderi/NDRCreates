@@ -60,6 +60,7 @@ namespace NDRCreates.Models.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string ThumbnailPath { get; set; }
         public string Content { get; set; }
         public string UserId { get; set; }
         public BasicUser Author { get; set; }
@@ -127,5 +128,4 @@ namespace NDRCreates.Models.Entities
         public string UserId { get; set; }
         public BasicUser User { get; set; }
     }
-
 }

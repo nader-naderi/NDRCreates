@@ -72,24 +72,18 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Create Admin Account.
+// Assign Admin Account.
 using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<BasicUser>>();
 
     string email = "2200stellaris@gmail.com";
-    string password = "2200stellaris@gmail.com";
+
+    var user = await userManager.FindByEmailAsync(email);
 
     // No Admin? Create new one.
-    if (await userManager.FindByEmailAsync(email) == null)
+    if (user != null)
     {
-        var user = new BasicUser();
-        user.Email = email;
-        user.UserName = "Nader Naderi";
-        user.EmailConfirmed = true;
-
-        await userManager.CreateAsync(user, password);
-
         await userManager.AddToRoleAsync(user, "Admin");
     }
 }

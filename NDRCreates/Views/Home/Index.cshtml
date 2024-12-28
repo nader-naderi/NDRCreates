@@ -1,77 +1,74 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <h1>NDR Creates</h1>
-                    <span class="subheading">Games</span>
-                </div>
+<div class="home-main-container">
+    <div class="shape rect ndrcreates-7981e53bfbf0"></div>
+    <div class="card-group d-flex flex-wrap">
+        <div class="card m-2 bg-dark">
+            <img src="~/assets/UnityPackage.png" class="card-img-top"
+                 alt="Responsive Image" />
+            <div class="card-body">
+                <h5 class="card-title text-light">Unity Packages</h5>
+                <p class="card-text text-light">
+                    Enhance your game development journey with my custom Unity packages,
+                    designed to help you create captivating experiences.
+                    Watch the packages in action on my YouTube channel,
+                    where I demonstrate their features and provide valuable insights.
+                </p>
+                <p class="card-text text-light">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </p>
+                <a class="btn btn-primary" asp-controller="Unity Packages" asp-action="Index">Click for More</a>
             </div>
         </div>
-    </div>
-</header>
-<div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                    <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on September 24, 2023
+        <div class="card m-2 bg-dark">
+            <img src="~/assets/BlogSample.png" class="card-img-top"
+                 alt="Palm Springs Road" />
+            <div class="card-body">
+                <h5 class="card-title text-light">Blog</h5>
+                <p class="card-text text-light">
+                    Dive into thought-provoking discussions and enriching content through my blog.
+                    Explore a variety of articles, books, and valuable insights on interesting topics
+                    related to software development, theoretical computer science, game design, and more.
                 </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on September 18, 2023
+                <p class="card-text text-light">
+                    <small class="text-muted">Last updated 3 mins ago</small>
                 </p>
+                <a class="btn btn-primary" asp-controller="BlogPosts" asp-action="Index">Click for More</a>
             </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                    <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on August 24, 2023
+        </div>
+        <div class="card m-2 bg-dark">
+            <img src="~/assets/CoursesWallapper.png" class="card-img-top"
+                 alt="Los Angeles Skyscrapers" />
+            <div class="card-body">
+                <h5 class="card-title text-light">Courses</h5>
+                <p class="card-text text-light">
+                    Level up your skills with my Game Development and Programming courses!
+                    Whether you're a beginner or an experienced programmer,
+                    there's something for e veryone. Discover both free and
+                    premium courses tailored to enhance your learning journey.
                 </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Failure is not an option</h2>
-                    <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on July 8, 2023
+                <p class="card-text text-light">
+                    <small class="text-muted">Last updated 3 mins ago</small>
                 </p>
+                <a class="btn btn-primary" asp-controller="Courses" asp-action="Index">Click for More</a>
             </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+        </div>
+        <div class="card m-2 bg-dark">
+            <img src="~/assets/portfolioImgRect.png" class="card-img-top"
+                 alt="Los Angeles Skyscrapers" />
+            <div class="card-body">
+                <h5 class="card-title text-light">Portfolio</h5>
+                <p class="card-text text-light">
+                    Explore my collection of software and game development projects
+                    that showcase my technical skills, creativity, and passion for coding.
+                </p>
+                <p class="card-text text-light">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </p>
+                <a class="btn btn-primary" asp-controller="Portfolio" asp-action="Index">Click for More</a>
+            </div>
         </div>
     </div>
 </div>
+
