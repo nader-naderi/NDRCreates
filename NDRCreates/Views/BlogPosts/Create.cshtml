@@ -3,13 +3,48 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
-
-<h4>BlogPost</h4>
-<hr />
+<head>
+    <link rel="stylesheet" href="~/css/textEditor.css">
+</head>
+<div class="textEditor">
+    <section>
+        <span asp-validation-for="Content" class="text-danger"></span>
+        <div class="button-container">
+            <button onclick="editoroption1()" title="Bold Text">
+                Bold
+            </button>
+            <button onclick="editoroption2()" title="Italic Text">
+                Italic
+            </button>
+            <button onclick="editoroption3()" title="Left Align">
+                <i class="fas fa-align-left"></i>
+            </button>
+            <button onclick="editoroption4()" title="Center Align">
+                <i class="fas fa-align-center"></i>
+            </button>
+            <button onclick="editoroption5()" title="Right Align">
+                <i class="fas fa-align-right"></i>
+            </button>
+            <button onclick="editoroption6()" title="Uppercase Text">
+                Upper Case
+            </button>
+            <button onclick="editoroption7()" title="Lowercase Text">
+                Lower Case
+            </button>
+            <button onclick="editoroption8()" title="Capitalize Text">
+                Capitalize
+            </button>
+            <button onclick="editoroption9()" title="Clear Text">
+                Clear Text
+            </button>
+        </div>
+        <textarea asp-for="Content" id="textarea1" rows="15" placeholder="Your text here...">
+                        </textarea>
+    </section>
+</div>
 <div class="row">
     <div class="col-md-4">
+        <span asp-validation-for="Content" class="text-danger"></span>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -17,11 +52,10 @@
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           @*  <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
-                <input asp-for="Content" class="form-control" />
-                <span asp-validation-for="Content" class="text-danger"></span>
-            </div>
+                < class="form-control" />
+            </div> *@
             <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
                 <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
@@ -35,6 +69,8 @@
                 <label asp-for="CategoryId" class="control-label"></label>
                 <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
+            <button type="submit" class="btn btn-primary">Submit Post</button>
+            <button type="button" class="btn btn-danger" asp-action="Index">Cancel & Back to List</button>
         </form>
     </div>
 </div>
@@ -42,7 +78,7 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+<script src="~/js/textEditor.js"></script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
